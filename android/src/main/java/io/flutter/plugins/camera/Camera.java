@@ -359,6 +359,9 @@ public class Camera {
       final CaptureRequest.Builder captureBuilder =
           cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
       captureBuilder.addTarget(pictureImageReader.getSurface());
+      captureBuilder.set(
+              CaptureRequest.SCALER_CROP_REGION,
+              captureRequestBuilder.get(CaptureRequest.SCALER_CROP_REGION));
       captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getMediaOrientation());
       switch (flashMode) {
         case off:
